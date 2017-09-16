@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		//从数组中随机抽取不同的n个元素
+		function rangdomArr(arr, num=0){
+			let newarr = [];
+			let repeat = 0;/*记录arr中元素重复个数*/
+			arr.forEach(function(value, index){/*检查原数组存在重复元素的个数*/
+				if(index != arr.lastIndexOf(arr[index]))
+					repeat++;
+			});
+			num = num > arr.length - repeat ? arr.length - repeat : num;/*当num大于arr的最大不重复个数时，将num修改为arr的最大不重复个数*/
+			while(newarr.length < num){
+				let index = Math.floor(Math.random() * arr.length);
+				newarr.includes(arr[index]) ? null : newarr.push(arr[index]);
+			}
+			return newarr;
+		}
+
+		let arr = ['a', 'b', 'c', 'd', 'e', '3', 'a'];
+		console.log(rangdomArr(arr, 9));
+
+		//去除数组重复的元素
+		function clearRepeat(arr){
+			let newarr = [];
+			arr.forEach(function(value, index){
+				newarr.includes(arr[index]) ? null : newarr.push(arr[index]);
+			});
+			return newarr;
+		}
+		function clearRepeat2(arr){
+			let newarr = [];
+			arr.forEach(function(value, index){
+				arr.lastIndexOf(arr[index]) == index ? newarr.push(arr[index]) : null;
+			});
+			return newarr;
+		}
+		function clearRepeat3(arr){
+			let obj = {};
+			let newarr = [];
+			for(let i = 0; i < arr.length; i++){
+				obj[arr[i]] = '';
+			}
+			for(let e in obj){
+				isNaN(e) ? newarr.push(e) : newarr.push(parseFloat(e));
+			}
+			return newarr;
+		}
+
+		// let arr = [2, 4, 1, 4, 5, 5, 7, 8, 3];
+		// console.log(clearRepeat(arr));
+		// console.log(clearRepeat2(arr));
+		// console.log(clearRepeat3(arr));
+	</script>
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>My Array</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var arr = new Array('a', 'b', 'c', 'd');
+		console.log(arr);
+
+		function MyArray(){
+			for(let i = 0; i < arguments.length; i++){
+				this[i] = arguments[i];
+			}
+			this.length = arguments.length;
+		}
+
+		let myArr = new MyArray(1, 2, 'a', 'b', 'de');
+		console.log(myArr);
+		console.log(myArr.length);
+
+		class MyArray1{
+			constructor(){//构造器
+				for(let i = 0; i < arguments.length; i++){
+					this[i] = arguments[i];
+				}
+				this.length = arguments.length;
+			}
+			push(){
+				for(let i = 0; i < arguments.length; i++){
+					this[this.length] = arguments[i];
+					this.length++;
+				}
+			}
+			indexOf(key, start=0, end=this.length-1){
+				for(let i = start; i <= end; i++){
+					if(this[i] == key){
+						return i;
+					}
+				}
+				return -1;
+			}
+			lastIndexOf(key, start=0, end=this.length-1){
+				for(let i = end; i >= start; i--){
+					if(this[i] == key){
+						return i;
+					}
+				}
+				return -1;
+			}
+			includes(key, start=0, end=this.length-1){
+				for(let i = start; i <= end; i++){
+					if(this[i] == key){
+						return true;
+					}
+				}
+				return false;
+			}
+			aplice(position=0, length=0, ...rest){
+				//position 删除或添加的起始位置，length 删除的长度（元素个数），rest 添加的元素
+				let newarr = new MyArray1();
+				if(length > 0){//删除
+					for(let i = 0; i < position; i++){
+						newarr.push(this[i]);
+					}
+					for(let i = position + length; i < this.length; i++){
+						newarr.push(this[i]);
+					}
+				}else{
+					newarr = this;
+				}
+				if(rest.length > 0){//添加
+					let addarr = new MyArray1();
+					for(let i = 0; i < position; i++){
+						addarr.push(newarr[i]);
+					}
+					for(let i = 0; i < rest.length; i++){
+						addarr.push(rest[i]);
+					}
+					for(let i = position; i < newarr.length; i++){
+						addarr.push(newarr[i]);
+					}
+					newarr = addarr;
+				}
+				return newarr;
+			}
+			reverse(){
+				let newarr = new MyArray1();
+				for(let i = this.length-1; i >= 0; i--){
+					newarr.push(this[i]);
+				}
+				return newarr;
+			}
+			join(arg){
+				let str = '';
+				for(let i = 0; i < this.length; i++){
+					str += String(this[i]) + arg
+				}
+				// return str.substring(0, str.length-1);
+				return str.slice(0, str.length-1);
+			}
+			combine(arr){
+				for(let i = 0; i < arr.length; i++){
+					this.push(arr[i]);
+				}
+				return this;
+			}
+			sortUp(){
+				var len = this.length;
+				let temp;
+				for(var i = 0; i < len-1; i++){
+					for(var j = i+1; j < len; j++){
+						if(this[j] < this[i]){
+							temp = this[i];
+							this[i] = this[j];
+							this[j] = temp;
+						}
+					}
+				}
+			}
+			sortDown(){
+				var len = this.length;
+				let temp;
+				for(var i = 0; i < len-1; i++){
+					for(var j = i+1; j < len; j++){
+						if(this[j] > this[i]){
+							temp = this[i];
+							this[i] = this[j];
+							this[j] = temp;
+						}
+					}
+				}
+			}
+			some(fn){
+				//判断当前数组是否包含某个条件
+				for(let i = 0; i < this.length; i++){
+					if(fn(this[i]))
+						return true;
+				}
+				return false;
+			}
+			every(fn){
+				for(let i = 0; i < this.length; i++){
+					if(!fn(this[i]))
+						return false;
+				}
+				return true;
+			}
+			map(fn){
+				let newarr = new MyArray1();
+				for(let i = 0; i < this.length; i++){
+					newarr.push(fn(this[i], i, this));
+				}
+				return newarr;
+			}
+			filter(fn){
+				let newarr = new MyArray1();
+				for(let i = 0; i < this.length; i++){
+					if(fn(this[i])){
+						newarr.push(this[i]);
+					}
+				}
+				return newarr;
+			}
+			delNull(){
+				let newarr = new MyArray1();
+				for(let i = 0; i < this.length; i++){
+					if(this[i] != undefined){
+						newarr.push(this[i]);
+					}
+				}
+				return newarr;
+			}
+		}
+		let myArr1 = new MyArray1(1, 2, 'a', 'b', 'de');
+		let myArr2 = new MyArray1(1, 2, 3, 4, 5, ['cc', 'ee', 'ff']);
+		console.log(myArr1);
+		console.log(myArr1.length);
+		myArr1.push('x', 'y', 'z', 'de');
+		console.log(myArr1);
+		console.log(myArr1.length);
+		console.log(myArr1.indexOf('de'));
+		console.log(myArr1.lastIndexOf('de'));
+		console.log(myArr1.some(function(value){
+			return typeof value == 'string';
+		}));
+		console.log(myArr1.some(value => typeof value == 'string'));
+		console.log(myArr2.every(value => typeof value == 'number'));
+		console.log(myArr1.reverse());
+		console.log(myArr1.join('-'));
+		myArr1.sortUp();
+		console.log('升序');
+		console.log(myArr1);
+		myArr1.sortDown();
+		console.log('降序');
+		console.log(myArr1);
+		console.log(myArr1.map(value => value + 2));
+		console.log(myArr1.filter(value => typeof value == 'number'));
+		console.log(myArr1.filter(value => typeof value == 'string'));
+		console.log(myArr1);
+		console.log(myArr1.aplice(5, 2, 'lin', 'jian', 'guo'));
+		console.log(myArr1.combine(myArr2));
+		// console.log(myArr1.indexOf == myArr2.indexOf);
+
+		/*if(confirm('帅不帅？')){
+			alert('帅！');
+		}
+		else{
+			alert('不帅！');
+		}*/
+	</script>
+</body>
+</html>

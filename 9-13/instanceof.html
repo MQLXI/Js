@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>instanceOf</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function Student(){
+			this.name = 'Student';
+		}
+		function Person(){
+			this.name = 'Person';
+		}
+		let zhangsan = new Student();
+		let lisi = new Person();
+		//判断张三李四是不是学生。即是否由构造函数Student创建
+		console.log(zhangsan instanceof Student);	//true
+		console.log(zhangsan instanceof Person);	//false
+		let arr = [];
+		console.log(zhangsan instanceof Array);	//false
+		console.log(arr instanceof Array);	//true
+	</script>
+</body>
+</html>

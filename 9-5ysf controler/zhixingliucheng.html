@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>执行流程</title>
+</head>
+<body>
+	<script>
+		/*if(window.XMLHttpRequest)
+			xmlhttp = new XMLHttpRequest();
+		else
+			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+		xmlhttp.open("GET", "http://www.mengblog.top:8080/uek/meng", true);
+		xmlhttp.send();*/
+	</script>
+
+	<script>
+		/*// 正数 alert(1);
+		var num = 10;
+		if(num > 0){
+			alert(1);
+		}*/
+
+
+		/*console.log(Number.MAX_VALUE);
+		console.log(Number.MIN_VALUE);
+
+		function test(score){
+			if(score >= 90 && score <= 100){
+				document.write("优秀");
+			}else if(score >= 80 && score < 90){
+				document.write("良好");
+			}else if(score >= 70 && score < 80){
+				document.write("中");
+			}else if(score >= 60 && score < 70){
+				document.write("及格");
+			}else if(score < 60 && score >= 0){
+				document.write("不及格");
+			}else{
+				document.write("输入错误");
+			}
+		}*/
+
+		/*for(var i = 0; i < 3; i++){
+			test(prompt("请输入你的成绩", 60));
+		}*/
+	</script>
+
+	<script>
+		// 类型转换
+		// 1*prompt('输入星期', 1);
+		// prompt('输入星期', 1)-0;
+		// prompt('输入星期', 1)/1;
+		/*switch(parseInt(prompt('输入星期', 1))){
+			case 1:
+				console.log('switch:' + 1); break;
+			case 2:
+				console.log('switch:' + 2); break;
+			case 3:
+				console.log('switch:' + 3); break;
+			case 4:
+				console.log('switch:' + 4); break;
+			case 5:
+				console.log('switch:' + 5); break;
+			default : 
+				console.log("其他情况"); break;
+		}*/
+	</script>
+
+	<script>
+		/*
+			重复执行相同的操作
+		 */
+		function digui(index){
+			document.write('<h5>' + index + '</h5>');
+			--index > 0 ? digui(index) : 0;
+		}
+		digui(10);
+
+		/*var i = 1;
+		do{
+			console.log('do while ' + i);
+			i++;
+		}while(i < 11);*/
+
+		/*var i = 1
+		while(i < 11){
+			console.log('while ' + i);
+			i++;
+		}*/
+
+		/*for(var i = 1; i < 11; i++){
+			console.log('for ' + i);
+		}*/
+
+		document.write('<input type=text name=time id=time value="">')
+		let text_time = document.getElementById('time');
+		timer();
+
+		function add(num, len){
+			var sum = 0;
+			var n = len--;
+			for(;len >= 0; len--){
+				sum += Math.pow(parseInt(num / Math.pow(10,len)),n);
+				num -= parseInt(num / Math.pow(10,len)) * Math.pow(10,len);
+			}
+			return sum;
+		}
+		var count = 0;
+		function shuixianhua(index){
+			count++;
+			var num = index;
+			var len = num.toString().length;
+			index === add(index, len) ? console.log('水仙花：' + index) : null;
+			try{
+				// index++ < 100000 ? shuixianhua(index) : null;
+			}catch(e){
+				// console.log(e + '递归次数：' + count);
+			}
+		}
+		shuixianhua(153);
+		console.log('递归次数：' + count);
+
+		try{
+			for(var i = 153; i<1000000 ; i++){
+				shuixianhua(i);
+			}
+		}catch(e){
+			console.log(e);
+		}
+
+		
+		function timer(){
+			let hour = 0;
+			let min = 0;
+			let sec = 0;
+			let m_sec = 0;
+			setInterval(function(){
+				if(min >= 60){
+					hour++;
+					min = 0;
+				}
+				if(sec >= 60){
+					min++;
+					sec = 0;
+				}
+				if(m_sec >  999){
+					sec++;
+					m_sec = 0;
+				}
+				m_sec++;
+				text_time.value = hour + ':' + min + ':' + sec + ':' + m_sec;
+				
+			}, 1);
+		}
+		
+
+		document.write('<div></div>');
+		document.querySelector('div').style.width='100px';
+		document.querySelector('div').style.height='100px';
+		document.querySelector('div').style.background='red';
+	</script>
+</body>
+</html>

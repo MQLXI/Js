@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>loop</title>
+</head>
+<body>
+	<script>
+		var tower;
+		var kong = '&nbsp;';
+		var count = 10;
+		for(var i = 1; i <= count; i++){
+			for(var k = 1; k <= count-i; k++){
+				document.write('_');
+			}
+			for(var j = 1; j <= 2*i-1; j++){
+				document.write('*');
+			}
+			document.write('<br/>');
+		}
+
+
+		document.write("<table border=0 cellspacing=1 cellpadding=10 align=center>");
+		var count = 20;
+		for(var i = 1; i <= count/2; i++){
+			document.write("<tr>");
+			var color =  parseInt(Math.random()*200 + 55) + ',' + parseInt(Math.random()*240+10) + ',' + parseInt(Math.random()*240+10);
+			for(var j = 1; j < count; j++){
+				j <= (count/2)-i || j >=(count/2)+i ? document.write('<td></td>') : document.write('<td style=background:rgb(' + color + ')>' + '*' + '</td>');
+			}
+			document.write("</tr>");
+		}
+		document.write("</table>");
+
+		document.write(1 + '&nbsp;' + 1 + '&nbsp;');
+		for(j = 1,i = 1; k < 100;){
+			k = j + i;
+			i = j;
+			j = k;
+			document.write(k + '&nbsp;');
+		}
+	</script>
+</body>
+</html>

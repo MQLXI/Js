@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>JSON</title>
+</head>
+<body>
+	<script type="text/javascript">
+		// JSON对象
+		let json = {};
+		// 等价于
+		let zhangsan = new Object();
+		// alert(json.constructor);
+
+		zhangsan.name = '张三';
+		zhangsan.age = 18;
+		zhangsan.sex = '男';
+		console.log(zhangsan);
+		json.zhangsan = zhangsan;
+		console.log(json);
+		console.log(json.zhangsan);
+
+		let lisi = {//属性名可用引号也可不用引号
+			name : '李四',
+			'age' : 94,
+			'sex' : '男',
+			'address' : '山西',
+			speak : function(){
+				alert('你好！我是' + this.name);
+			}
+		};
+		console.log(lisi);
+		lisi.speak();
+	</script>
+</body>
+</html>

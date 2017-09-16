@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Math</title>
+</head>
+<style type="text/css">
+	#box{
+		width: 100px;
+		height: 100px;
+		background: skyblue;
+		margin: 0 auto;
+	}
+</style>
+<body>
+	<div id="box"></div>
+	<script type="text/javascript">
+		console.log(Math);
+		console.log(Math.abs(10));//abs()	//绝对值
+		console.log(Math.abs(-10));
+		console.log(Math.max(-10, 5, 2, 8, 7, 0));//最大值
+		console.log(Math.min(-10, 5, 2, 8, 7, 0));//最小值
+		console.log(Math.round(10.45));//四舍五入
+		console.log(Math.ceil(10.45));//向上取整
+		console.log(Math.ceil(-0.5));//向上取整  -0
+		console.log(Math.floor(-0.5));//向下取整
+		console.log(Math.random());//获取随机数 (0,1)
+		console.log(Math.pow(2, 10));// 求幂函数
+		console.log(Math.sqrt(16));// 求开平方
+
+		let arr = ['a', 'b', 'c', 'd', 'e', 'f'];
+		function randomArr(arr, num=0){
+			let newarr = [];
+			num = num > arr.length ? arr.length : num;	/*num大于arr的长度时，将其修改为arr的长度*/
+			while(newarr.length < num){
+				let index = Math.floor(Math.random()*arr.length);
+				newarr.includes(arr[index]) ? null : newarr.push(arr[index]);
+			}
+			return newarr;
+		}
+		console.log(randArr(arr, 9));
+
+
+		let box = document.getElementById('box');
+		box.onmouseover = function(){
+			box.style.background = color();
+		}
+		function color(){
+			let n = [];
+			for(let i = 0; i < 3; i++){
+				n.push(Math.round(Math.random()*255));
+			}
+			return 'rgb(' + n.join(',') + ')';
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+body{
+	background: #555;
+}
+main{
+	width: 450px;
+	height: 300px;
+	margin: 100px auto 90px;
+	background: #fff;
+	text-align: center;
+	box-sizing: border-box;
+	padding: 10px 25px;
+	border-radius: 8px;
+}
+input{
+	width: 90%;
+	height: 40px;
+	margin: 15px 0 15px;
+	background: #fff;
+	outline: none;
+	border: 1px solid #737373;
+	font-size: 16px;
+	box-sizing: border-box;
+	padding: 0 9px;
+	transition: all 0.5s;
+}
+input:focus{
+	border-color: #00a0c0;
+}
+#submit{
+	background: #00a0c0;
+	outline: none;
+	border: none;
+	color: #fff;
+	font-size: 18px;
+	font-weight: bold;
+}

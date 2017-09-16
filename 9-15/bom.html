@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>BOM</title>
+</head>
+<body>
+	<script type="text/javascript">
+		//window 的属性可以直接使用，不需要写window
+		// console.log(window.screenLeft);	//浏览器左侧到屏幕左侧的距离
+		// console.log(window.screenX);	//浏览器左侧到屏幕左侧的距离 IE  -8  低版本没有这个属性
+		// console.log(window.screenLeftRight);
+		// console.log(window.screenLeftY);
+
+		// console.log(window.innerWidth);	//获取视口的宽  IE 8及以下不支持
+		// console.log(window.innerHeight);	//获取视口的高    IE 8及以下不支持
+
+		// console.log(window.outerWidth);	//获取浏览器的宽  IE 8及以下不支持
+		// console.log(window.outerHeight);	//获取浏览器的高    IE 8及以下不支持
+		// console.log(document.documentElement.clientWidth)	//document对象获取浏览器的宽
+		// console.log(document.documentElement.clientHeight)	//document对象获取浏览器的高
+
+		// window.top			//顶层窗口
+		// window.parent		//父级窗口
+		// window.self 		//当前窗口 可以单独 self 使用， window == self
+		// window.frames		//获取子窗口frame 使用下标
+
+		// moveTo(100, 100);	//移动浏览器位置
+		// moveBy(100, 100);	//移动浏览器位置，每次刷新，移动窗口
+		// resizeTo(300, 300);	//修改浏览器窗口大小
+
+		// let inter = window.setInterval(function(){}, 1000); 	//（不停地执行）以毫秒为周期单位，最小为4; 变量inter记函数的地址
+		// window.clearInterval(inter);		//清除inter
+
+		// let timeout = setTimeout(function(){}, 1000);	//指定周期后执行一次，仅执行一次
+		// clearTimeout(timeout);
+		function timeout(){
+			setTimeout(function(){
+				console.log(1);
+				timeout();
+			}, 4);
+		}
+		let fn = function(){
+			alert(1);
+			setTimeout(fn, 1000);
+		}
+		// timeout();
+		// fn();
+
+		// window.alert();
+		// window.confirm();
+		// window.prompt();
+
+		// open(url, 'newwindow', 'width=500, height=200,top=200', true);//url打开目标文件，newwindow打开到，‘width……’修饰打开的新窗口
+		// close();//火狐浏览器只对open方式打开的窗口才有效
+		
+		window.onbeforeunload = function(){
+			return "quit?";
+			// open('bom.html','_blank');
+		}
+	</script>
+</body>
+</html>

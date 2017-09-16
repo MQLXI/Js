@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>原型对象</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function Person(){
+			this.name = 'zhangsan';
+			this.age = 18;
+			this.sex = '男';
+			/*this.say = function(){
+				alert(2);
+			}*/
+		}
+		// console.log(Person.prototype);
+		Person.prototype = {
+			say : function(){
+				alert(`say ${this.name}`);
+			},
+			play : function(){
+				alert('play');
+			},
+			hobby: 'travel'
+		}
+		Person.prototype.aa = function(){
+			alert(`say ${this.name}`);
+		}
+
+		let zhangsan = new Person();
+		let lisi = new Person();
+		console.log(zhangsan.aa());
+		console.log(lisi.hobby);
+		// console.log(zhangsan.say() == lisi.say());	//true 按值比较
+		console.log(zhangsan.say == lisi.say);	//false	按地址比较
+		// console.log([] == []);	//false
+		//删除属性或方法，适用于构造函数中定义的
+		console.log(zhangsan.sex);
+		delete zhangsan.sex;
+		console.log(zhangsan.sex);
+	</script>
+</body>
+</html>

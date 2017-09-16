@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Array</title>
+</head>
+<body>
+	<script>
+		// 杨辉三角   二维数组
+		function yangHuiSJ(cols){
+			var num = [];
+			var row = 0, col = 0;
+			for(var i = 0; i < cols; i++){
+				col = 0;
+				num[row] = [];
+				num[row][col] = num[row][row] = 1;
+				for(var k = 1; k < cols - i; k++){
+					document.write('&nbsp;');
+				}
+				for(var j = 0; j < i+1; j++){
+					if(row >= 2 && col > 0 && col < row){
+						num[row][col] = num[row-1][col-1] + num[row-1][col];
+					}
+					document.write( '&nbsp;' + num[row][col++]);
+				}
+				row++;
+				document.write( '<br />' );
+			}
+		}
+		yangHuiSJ(20);
+
+
+		function arr2Max(arr2){
+			//二维数组求最大值
+			var max = arr2[0][0];var count = 0, count1 = 0;
+			for(var i = 0; i < arr2.length; i++){
+				for(var j = 0; j < arr2[i].length; j++){
+					if(max < arr2[i][j]){
+						max = arr2[i][j];count1++;
+					}
+					count++;
+				}
+			}
+			console.log(`替换次数：${count1}`);
+			console.log(`查找个数：${count}`);
+			console.log(max);
+		}
+	</script>
+
+	<script>
+		var arr = [9, 8, 45, 2, 11, 3, 79, 37, 1];
+		function arrMax(arr){//一维数组求最大值
+			var max = arr[0];
+			for(var i = 0; i < arr.length; i++){
+				if(arr[i] > max){
+					max = arr[i];
+				}
+			}
+			console.log(max);
+		}
+		arrMax(arr);
+
+
+		
+
+		var len = arr.length;
+		var temp;
+		var count = 0;
+		var xunhuan = 0;
+		for(var i = 0; i < len-1; i++){
+			for(var j = i+1; j < len; j++){
+				if(arr[j] > arr[i]){
+					temp = arr[i];
+					arr[i] = arr[j];
+					arr[j] = temp;
+					count++;
+				}
+				xunhuan++;
+			}
+		}
+		console.log(arr);
+		console.log('交换次数：' + count);
+		console.log('循环次数：' + xunhuan);
+
+		// 冒泡排序
+		var count1 = 0;
+		var xunhuan1 = 0;
+		for(var i = 0; i < len; i++){
+			for(var j = 0; j < len-i; j++){
+				if(arr[j+1] < arr[j]){
+					temp = arr[j];
+					arr[j] = arr[j+1];
+					arr[j+1] = temp;
+					count1++;
+				}
+				xunhuan1++;
+			}
+		}
+		console.log(arr);
+		console.log('交换次数：' + count1);
+		console.log('循环次数：' + xunhuan1);
+	</script>
+</body>
+</html>

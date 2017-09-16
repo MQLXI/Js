@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>内置顶层函数</title>
+</head>
+<body>
+	<script>
+		//JS 内部提供的函数 全局作用域，任意位置可以调用
+		/*
+			escape()	unescapse()		//编码
+			Number()	String()	Boolean()	parseInt() 转换成整数	parseFloat()	//数据类型转换
+			isNaN()	......
+		 */
+		// let str = '100px';
+		// prompt();
+		
+		/*var str = "林建国";
+		console.log(escape(str));		//%u6797%u5EFA%u56FD
+		console.log(unescape(str));		//林建国
+		console.log(unescape('%u6797%u5EFA%u56FD'));		//林建国*/
+		// console.log(escape);
+		
+		/*
+		console.log(Number(0b1111));	//15
+		console.log(Number('0b1111'));	//15
+		console.log(Number('1111'));	//1111
+		console.log(Number(true));		//1
+		console.log(Number(false));		//0
+		console.log(Number(null));		//0
+		console.log(Number(undefined));	//NaN
+		console.log(Number('00123'));	//123
+		console.log(Number(0123));	//83	八进制
+		console.log(Number(0o123));	//83	八进制
+		console.log(Number('123.01'));	//123.01
+		console.log(Number('123.01.02'));	//NaN
+		console.log(Number('123px'));	//NaN
+		console.log(Number('abcd'));	//NaN
+		console.log(Number('true'));	//NaN
+		*/
+		/*
+		console.log(String(true));	//"true"
+
+		console.log(Boolean(''));	//false
+		console.log(Boolean(' '));	//true
+		console.log(Boolean(NaN));	//false
+		console.log(Boolean([]));	//true
+
+		console.log(parseInt('1234'));	//1234
+		console.log(parseInt('0b1234'));	//0
+		console.log(parseInt('100px'));	//100
+		console.log(parseInt('100px200'));	//100
+		console.log(parseInt('   100px200'));	//100
+		console.log(parseInt('   -100px200'));	//-100
+		console.log(parseInt('   -100  200'));	//-100
+		console.log(parseInt('abc100  200'));	//NaN
+		*/
+		//字符串转换为整数
+		//数字、+、-、空格。第一个数字字符开始，第一个非数字结束
+		/*console.log(parseFloat('100.5px'));		//100.5
+		console.log(parseFloat('1005px'));		//1005
+		
+		console.log(isNaN(false));	//false
+		console.log(isNaN('abc'));	//true*/
+
+
+		console.log({});	//Object {}
+		console.log(+[]);	//0
+		console.log(~+[]);	//-1
+		console.log(!(~+[]));	//false
+		console.log(!(~+[])+{});	//false[Object Object]
+		console.log([~+""]);		//[-1]
+		console.log([+[]]*[~+[]]);	//-0
+		console.log([~+""][+[]]*[~+[]]);	//1
+
+		//运算符 ~ 取反
+		console.log((!(~+[])+{})[--[~+""][+[]]*[~+[]] + ~~!+[]]+({}+[])[[~!+[]]*~+[]]);
+	</script>
+</body>
+</html>

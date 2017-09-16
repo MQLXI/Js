@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Object</title>
+</head>
+<body>
+	<script type="text/javascript">
+		/* 谁 什么 */
+		function Student(name, age, sex){
+			// 共有属性和方法
+			this.name = name;
+			this.age = age;
+			this.sex = sex;
+			this.speak = function(){
+				alert(this.name);
+			}
+		}
+		let zhangsan = new Student();
+		let lisi = new Student();
+		let wangwu = new Student('王五', '29', '女')
+
+		zhangsan.name = '张三';
+		zhangsan.classes = 'WUIF1707-1';
+		
+		lisi.name = '李四';
+		lisi.study = function (){
+			alert('学习');
+		}
+
+		console.log(zhangsan);
+		console.log(lisi);
+		console.log(wangwu);
+
+		function iPhone(size, color, name, ppi, cpu, cpuCount, rom, ram, camera, media){
+			this.size = size;
+			this.color = color;
+			this.name = name;
+			this.ppi = ppi;
+			this.cpu = cpu;
+			this.cpuCount = cpuCount;
+			this.rom = rom;
+			this.ram = ram;
+			this.camera = camera;
+			this.media = media;
+			this.call = function(){
+				alert('语音通话、视频通话');
+			}
+			this.messages = function(){
+				alert('信息功能');
+			}
+			
+		}
+		let iphone8 = new iPhone(5.5, 'sliver', 'iPhone8', '4k', 'A11', '双核', '4G', '256G', '2000w', 'smartmedia');
+
+		console.log(iphone8);
+		iphone8.call();
+
+		/* for in */
+		iphone8
+		console.log(iphone8['size'])
+		for(let i in iphone8){
+			console.log(`${i}------${iphone8[i]}----${typeof iphone8[i]}`);
+			if((typeof iphone8[i]) == 'function'){
+				iphone8[i]();
+			}
+		}
+
+	</script>
+</body>
+</html>

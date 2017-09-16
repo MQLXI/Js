@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>林建国9-5</title>
+</head>
+<body>
+	<script>
+		document.body.style.textAlign="center";
+		//获取随机颜色
+		function getColor(){
+			let num = [];
+			for(let i = 0; i < 3; i++){
+				num.push(Math.round(Math.random()*255));
+			}
+			return 'rgb(' + num.join(',') + ')';
+		}
+
+		// *号
+		for(var i = 0; i < 10; i++){
+			for(var j = 0; j <= i; j++){
+				document.write('*')
+			}
+			document.write('<br>')
+		}
+
+		// 一次性输出九九乘法表
+		function tableOnce(){
+			var table = '<table border=0 cellspacing=1 cellpadding=10 align=center>';
+			for(var i = 1; i <= 9; i++){
+				table += '<tr>';
+				for(var j = 1; j <= i; j++){
+					table += '<td>' + i + '*' + j + '=' + i*j + '</td>';
+				}
+				table += '</tr>';
+			}
+			table += '</table>';
+			document.write(table);
+		}
+		tableOnce();
+
+
+		function table(cate){
+			/*cate == 1 单元格不同色，cate == 2 列同色，cate == 3 行同色 cate 等于其他值则无色*/
+			document.write("<table border=0 cellspacing=1 cellpadding='10' align='center'>");
+			if(cate==2){
+				var color = [];
+			}
+			for(var i = 1; i < 10; i++){
+				if(cate==3){
+					var color = getColor();
+				}
+				document.write("<tr>");
+				for(var j = 1; j <= i; j++){
+					if(cate==1){
+						document.write('<td style=background:' + getColor() + '>' + i + '*' + j + '=' + i*j + '</td>');
+					}else if(cate==2){
+						color[j-1] = color[j-1] ? color[j-1] : getColor();
+						document.write('<td style=background:' + color[j-1] + '>' + i + '*' + j + '=' + i*j + '</td>');
+					}else{
+						document.write('<td style=background:' + color + '>' + i + '*' + j + '=' + i*j + '</td>');
+					}
+				}
+				document.write("</tr>");
+			}
+			document.write("</table>");
+		}
+		table(1);
+		table(2);
+		table(3);
+		table(4);
+
+		// 杨辉三角
+		document.write("<table border=0 cellspacing=1 cellpadding=10 align=center>");
+		var count = 21;
+		var num = new Array();
+		var row = 1, col = 1;
+		for(var i = 1; i < count/2; i++){
+			document.write("<tr>");
+			var color =  getColor();
+			col = 1;
+			num[row] = [];
+			num[row][col] = num[row][row] = 1;
+			for(var j = 1; j < count; j++){
+				if(row >= 3 && col > 1 && col < row){
+					num[row][col] = num[row-1][col-1] + num[row-1][col];
+				}
+				(j <= (count/2)-i || j >=(count/2)+i) || ((i%2===1 && j%2===0) || (i%2===0 && j%2===1)) ? document.write('<td></td>') : document.write('<td style=background:' + color + '>' + num[row][col++] + '</td>');
+			}
+			row++;
+			document.write("</tr>");
+		}
+		document.write("</table>");
+	</script>
+</body>
+</html>

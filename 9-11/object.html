@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Object</title>
+</head>
+<body>
+	<script>
+		//json
+		 var json = {};
+		// console.log(typeof json);
+		console.log({id:01, name:'Lin'}.id);
+
+		function Person(){
+			
+		}
+
+		let zhangsan = new Person();
+		let lisi = new Person();
+		zhangsan.name = '张三';
+		zhangsan.score = [['Chinese', 'Math', 'English'], 90, 89, 88];
+		console.log(zhangsan.name);
+		console.log(zhangsan.score);
+		lisi.id = 1;
+		zhangsan.id = 1;
+
+
+		let people = {}
+		people.zhangsan = zhangsan;
+		people.lisi = lisi;
+		console.log(people);
+	</script>
+</body>
+</html>

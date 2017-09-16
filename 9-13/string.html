@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>String 对象</title>
+</head>
+<body>
+	<script type="text/javascript">
+		/*
+			Object
+			String
+			Number
+			Boolean
+			Array
+			Date
+			RegExp	//正则
+
+			BOM		//浏览器环境对象
+		*/
+		let str = 'abcdabcd';
+		/*console.log(str.constructor);
+		console.log(str.__proto__);
+		console.log(str.trim());*/
+		function replaceAll(str, rStr, fStr){
+			if(str.includes(rStr)){
+				str = str.replace(rStr, fStr);
+				if(str.includes(rStr)){
+					str = replaceAll(str, rStr, fStr);
+				}
+			}
+			return str;
+		}
+		function replaceAll_while(str, rStr, fStr){
+			while(str.includes(rStr)){
+				str = str.replace(rStr, fStr);
+			}
+			return str;
+		}
+
+		/*console.log(replaceAll(str,'abcd','****'));
+		console.log(str);*/
+
+		function find(str, rStr){
+			let re = [];
+			let fStr = '*'.repeat(rStr.length);
+			while(str.includes(rStr)){
+				re.push(str.indexOf(rStr));
+				str = str.replace(rStr, fStr);
+			}
+			return re;
+		}
+		function find_for(str, rStr){
+			let len = rStr.length;
+			if(len > 0){
+				let re = [];
+				let count = 0;
+				for(let i = 0; i < str.length - len +
+				 1; i++){count++;
+					/*if(str.substr(i,len) == rStr){
+						re.push(i);
+					}*/
+					/*if(str.slice(i,i+len) == rStr){
+						re.push(i);
+					}*/
+					/*if(str.substring(i,i+len) == rStr){
+						re.push(i);
+					}*/
+					if(str.slice(i).indexOf(rStr) > -1){
+						re.push(str.slice(i).indexOf(rStr) + i);
+						i = str.slice(i).indexOf(rStr) + i + rStr.length - 1;
+					}
+				}
+				console.log('循环次数 :'+ count);
+				return re;
+			}else{
+				return -1;
+			}
+		}
+		let url = 'https://www.baidu.com/https://www.baidu.com/https://www.baidu.com/https://www.baidu.com/https://www.baidu.com/https://www.baidu.com/https://www.baidu.com/https://www.baidu.com/https://www.baidu.com/https://www.baidu.com/';
+		console.log(find(url, 'https://www.baidu.com/'));
+		console.log(find_for(url, 'https://www.baidu.com/'));
+	</script>
+</body>
+</html>

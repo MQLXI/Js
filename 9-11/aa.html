@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		/*function fn(...rest){
+			console.log(arguments);
+			console.log(rest);
+		}
+		fn(1,2,3,5);
+
+		var arr = [1,2,3,4,['x','y','z']];
+        console.log(copy(arr));
+        function copy(arr){
+        	var newarr = [];
+        	for (var i=0;i<arr.length;i++) {
+        		if (typeof arr[i] == 'object'){
+        			newarr[i] = copy(arr[i]); 
+        		}
+        		else{
+        			newarr[i] = arr[i];
+        		}
+        	}
+        	return newarr;
+        }
+
+        function fn(){
+        	var num = 10;
+        	return fn1;
+        	function fn1(){
+        		return ++num;
+        	}
+        }
+        var result = fn();
+        alert(result());*/ // 11
+        // 闭包 
+        // 
+        /*var fn = function(a){
+        	return a;
+        } 
+        //等价于 (箭头函数)
+        var fn = a => a;
+        alert(fn(10));*/
+
+        /*function map(arr, fn){
+        	var newarr = [];
+        	for(var i = 0; i < arr.length; i++){
+        		newarr[newarr.length] = fn(arr[i]);
+        	}
+        	return newarr;
+        }
+        var arr = [1, 2, 3, 4, 5];
+        var result = map(arr, function(value){
+						  return value - 2;
+						});
+		var result1 = map(arr, value => value - 2);
+		console.log(result);
+		console.log(result1);*/
+
+		//变量声明方式let 同 var
+		//不同点1，let声明的变量不能在声明前访问，会报错。var声明的变量则可以，只不过值是undefined
+		//卜同典2，同一作用域内let不允许重复声明相同的变量
+		/*let num = 10;
+		let num1 = 20;
+		function fn(){
+			console.log(num);
+			// var num = 'a';
+		}
+		fn();*/
+		/*let num = 'abcd';
+		{
+			let num = 10;
+			{
+				let num = 20;
+				console.log(num);
+			}
+			console.log(num);
+		}
+		console.log(num);*/
+
+		// var arr = [];
+		/*for(var i = 0; i < 10; i++){
+			arr[i] = function(){
+				alert(i);
+			}
+		}
+		arr[2]();	//10
+		arr[5]();	//10*/
+
+		/*for(let i = 0; i < 10; i++){
+			arr[i] = function(){
+				alert(i);
+			}
+		}
+		arr[2]();	//2
+		arr[5]();	//5*/
+
+
+		function hannuo(n, A, B, C){
+			if(n == 1){
+				document.write('move '  + n + ' from '  + A + ' to ' + C + '<br>');
+			}
+			else{
+				hannuo(n-1, A, C, B);
+				document.write('move '  + n + ' from ' + A + ' to ' + C + '<br>');
+				hannuo(n-1, B, A, C);
+			}
+		}
+		hannuo(2, 'A', 'B', 'C');
+	</script>
+</body>
+</html>

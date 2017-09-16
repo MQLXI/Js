@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Array</title>
+</head>
+<body>
+	<script type="text/javascript">
+		/*
+		function Person(name, age){
+			this.name = name;
+			this.age = age;
+		}
+		Person.prototype = {
+			study : function(){
+				alert('study');
+			}
+		}
+		Person.prototype.say = function(){
+			alert(this.name);
+		}
+
+		Person.hello = 'hello world';	//Person 的属性，并非Person的对象的属性
+
+		let zhangsan = new Person('zhangsan', 18);
+
+		console.log(zhangsan.name);
+		console.log(zhangsan.hello);	//undefined
+		console.log(Person.hello);		//hell world
+		*/
+
+		// let arr = [1, 2, 3 ,4, 5];
+		// arr.length = 0;		//数组的length可以修改
+
+		// arr.forEach(value => console.log(value));
+		/*for(let i in arr){
+			console.log(i);
+		}*/
+		// let result = arr.push('a', 'b', 'c', 'd', 'e');
+		// let result = arr.unshift('a', 'b', 'c', 'd', 'e');
+		// let arr2 = ['a', 'b', 'c', 'd', 'e'];
+		// let result = arr.concat(arr2);
+		// arr.push(...arr2);
+		// let result = arr.splice(arr.length, 0, ...arr2);
+
+		// let arr = [3, 93, 23, 5, 84, 29, 1, 104, 52];
+		// arr.sort();		//按字符串的方式进行排序
+		/*arr.sort(function(a, b){	//通过回调函数，让数组按照元素值的大小进行排序。
+			return a - b < 0;
+		});*/
+
+		/*arr.forEach(function(value, index, obj){
+			console.log(`${value}--${index}--${obj}`);
+		});*/
+
+		/*let ou = []
+		arr.forEach(function(value){
+			value % 2 ? null : ou.push(value);
+		})
+		console.log(ou);*/
+		/*let newarr = arr.filter(function(value, index, obj){
+			return value % 2 == 0;//只需写条件
+		});
+		console.log(newarr);*/
+
+		let arr = [1,2,3,4,5,3,2,1,5,6,7];
+		let arr2 = [5,2,43,5,9,6,4,8, 'd', 'f', 'd',2,1,4,43,3];
+		
+		Array.prototype.clearRepeat = function(){/*//数组去重*/
+			let newarr = [];
+			/*this.forEach(function(value){//先检查新数组中是否包含当前元素，若不存在则将当前元素push到新数组
+				newarr.includes(value) ? null : newarr.push(value);
+			});*/
+			this.forEach(function(value, index, obj){/*//在原数组中检查当前元素之后是否也存在与当前元素相同的元素，若存在则跳过当前元素，否则将当前元素push到新数组
+				//检查与当前元素相同的元素在原数组中最后一次出现的位置与当前位置是否相同，若相同则表示当前元素之后没有与当前元素相同的元素*/
+				obj.lastIndexOf(value) == index ? newarr.push(value) : null;
+			});
+			return newarr;
+		};
+		console.log(arr.clearRepeat());
+
+		// console.log(result);
+		console.log(arr);
+
+		console.log(arr2.clearRepeat());
+		console.log(arr2);
+
+
+		function clearRepeat2(arr){/*利用对象属性不重复的特点，将数组元素设置为对象的属性，再将对象的属性名重新转为数组元素*/
+			let obj = {};
+			for(let i = 0; i < arr.length; i++){
+				obj[arr[i]] = true;
+			}
+			let newarr = [];
+			for(let e in obj){
+				isNaN(e) ? newarr.push(e) : newarr.push(parseFloat(e));
+			}
+			return newarr;
+		}
+		console.log(clearRepeat2(arr2));
+	</script>
+</body>
+</html>

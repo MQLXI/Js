@@ -248,17 +248,21 @@
 	width: 100%;
 	height: 100%;
 	position: relative;
+	overflow: hidden;
 }
 .banner .banner_img li{
 	width: 100%;
 	height: 100%;
 	position: absolute;
 	top: 0;
-	left: 0;
-	z-index: 1;
+	left: 100%;
+	/* z-index: 1; */
+	/* opacity: 0; */
 }
 .banner .banner_img li:first-of-type{
-	z-index: 2;
+	/* z-index: 2; */
+	/* opacity: 1; */
+	left: 0;
 }
 .banner #banner_img_left, #banner_img_right{
 	width: 41px;
@@ -508,8 +512,17 @@
 	font-weight: bold;
 	color: #666;
 }
+.hg_more .more_left{
+	color: #ccc;
+}
+.hg_more .more_left:hover{
+	color: #ff6700;
+}
 .more_right{
 	border: none;
+}
+.more_right:hover{
+	color: #ff6700;
 }
 .xm-plain-box .xm_star_box{
 	width: 100%;
@@ -519,20 +532,19 @@
 	width: 100%;
 	height: 340px;
 	overflow: hidden;
+	position: relative;
 }
 .xm-plain-box .xm_star_box main ul{
 	width: 2480px;
 	height: 100%;
-	/* transition: all 4s ease 1s;
-	animation: turn 1s 3s infinite; */
+	/* transition: all 0.5s ease; */
+	position: absolute;
+	left: 0;
 }
-@keyframes turn{
-	0%{
-		transform: translateX(0);
-	}
-	100%{
-		transform: translateX(-1226px);
-	}
+.xm-plain-box .xm_star_box main ul:after{
+	content: '';
+	display: block;
+	clear: both;
 }
 .xm-plain-box .xm_star_box main ul li{
 	width: 234px;
@@ -789,8 +801,11 @@
 	position: relative;
 }
 .recommend .recommend_list ul{
-	width: 4960px;
+	width: 2480px;
 	height: 314px;
+	position: absolute;
+	left: 0;
+	/* transition: all 0.5s; */
 }
 .recommend .recommend_list ul:after{
 	content: '';
@@ -1045,6 +1060,7 @@
 	font-size: 16px;
 	line-height: 24px;
 	float: left;
+	cursor: pointer;
 }
 .content main ul li div.direction .icon-iconfontleft:hover, .icon-iconfontright:hover{
 	background: #555;

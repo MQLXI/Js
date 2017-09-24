@@ -44,6 +44,7 @@ function banner(speed=4000){
 //////////////////////////////////////////////////////////////////
 scroll();
 function scroll(){
+	let ch = innerHeight;
 	let containerTop = document.querySelector('div.container').offsetTop;
 	let hide_nav_back = document.querySelector('.hide_nav_back');
 	let hide_nav = document.querySelector('.hide_nav');
@@ -86,6 +87,15 @@ function scroll(){
 		}
 
 		tops.forEach((value, index)=>{
+			if((sc + ch) > value-100){
+				if(index < floors.length){
+					let imgs = floors[index].getElementsByTagName('img');
+					for(let i = 0; i < imgs.length; i++){
+						imgs[i].getAttribute('imgPath') ? imgs[i].src = imgs[i].getAttribute('imgPath') : '';
+					}
+				}
+			}
+			
 			if(flag && (sc >= value-80) && index < tops.length-1){
 				jump_floors_li[on].style.background = colors[colors.length-1];
 				on = index;

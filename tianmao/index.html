@@ -5,6 +5,7 @@
 	<title>天猫商城</title>
 	<link rel="stylesheet" href="css/index.css">
 	<link rel="stylesheet" href="iconfont/iconfont.css">
+	<link rel="stylesheet" href="iconfont1/iconfont.css">
 </head>
 <body>
 	<!-- header begin -->
@@ -74,7 +75,7 @@
 	<!-- nav begin -->
 	<nav>
 		<main>
-			<div class="product_cate">商品分类
+			<div class="product_cate"><i class="iconfont icon-fenlei"></i>商品分类
 				<!-- 分类列表 -->
 				<ul>
 					<li><i class="iconfont icon-nvzhuangneiyi"></i><a href="">女装/内衣</a>
@@ -159,8 +160,18 @@
 	<!-- banner end -->
 	<!-- container begin -->
 	<div class="container">
+		<div class="hide_nav_back"></div>
+		<div class="hide_nav">
+			<main>
+				<div class="hide_nav_left"><span class="iconfont icon-tmall"></span><span class="iconfont icon-tianmao-copy"></span></div>
+				<div class="hide_nav_center">
+					<input type="text" class="hide_search_input" placeholder="搜索">
+					<input type="button" value="搜索">
+				</div>
+			</main>
+		</div>
 		<!-- module-body j_newHotBrandBody begin -->
-		<section class="j_newHotBrandBody">
+		<section class="floor j_newHotBrandBody">
 			<div class="videoleft">
 				<div class="live_play">
 					<img src="img/TB2zwynaciGJuJjSZFsXXaqApXa_!!0-tmallfun.jpg_1080x1800Q80S0.jpg_.webp" alt="">
@@ -377,7 +388,7 @@
 		</section>
 		<!-- module-body j_newHotBrandBody end -->
 		<!-- row tow begin -->
-		<section class="row_tow">
+		<section class="floor row_tow">
 			<main>
 				<ul>
 					<li><span class="iconfont">潮流前沿</span></li>
@@ -478,11 +489,11 @@
 		</section>
 		<!-- row tow end -->
 		<!-- beautiful life begin -->
-		<section class="buty_life">
+		<section class="floor buty_life">
 			<hgroup>
 				<i class="color_mark"></i>
 				<span>美丽人生</span>
-				<span>FASHION & BEAUTY</span>
+				<span>FASHION &amp; BEAUTY</span>
 				<ul>
 					<li><a href="">连衣裙</a></li>
 					<li><a href="">T恤男</a></li>
@@ -579,7 +590,7 @@
 		</section>
 		<!-- beautiful life end -->
 		<!-- 潮电酷玩 begin -->
-		<section class="buty_life">
+		<section class="floor buty_life">
 			<hgroup>
 				<i class="color_mark"></i>
 				<span>潮电酷玩</span>
@@ -685,11 +696,11 @@
 			</a>
 		</div>
 		<!-- 居家生活 begin -->
-		<section class="buty_life">
+		<section class="floor buty_life">
 			<hgroup>
 				<i class="color_mark"></i>
 				<span>居家生活</span>
-				<span>GROCERY & HEALTH</span>
+				<span>GROCERY &amp; HEALTH</span>
 				<ul>
 					<li><a href="">零食</a></li>
 					<li><a href="">牛奶</a></li>
@@ -788,7 +799,7 @@
 		</section>
 		<!-- 居家生活 end -->
 		<!-- 打造爱巢 begin -->
-		<section class="buty_life">
+		<section class="floor buty_life">
 			<hgroup>
 				<i class="color_mark"></i>
 				<span>打造爱巢</span>
@@ -889,11 +900,11 @@
 		</section>
 		<!-- 打造爱巢 end -->
 		<!-- 户外出行 begin -->
-		<section class="buty_life">
+		<section class="floor buty_life">
 			<hgroup>
 				<i class="color_mark"></i>
 				<span>户外出行</span>
-				<span>OUTDOORS & AUTOMOTIVE</span>
+				<span>OUTDOORS &amp; AUTOMOTIVE</span>
 				<ul>
 					<li><a href="">车秒贷</a></li>
 					<li><a href="">皮肤衣</a></li>
@@ -992,7 +1003,7 @@
 			</a>
 		</div>
 		<!-- wonderful begin -->
-		<section class="wonderful">
+		<section class="floor wonderful">
 			<hgroup>
 				<span class="line"></span>
 				<b class="like">♥</b>
@@ -1222,11 +1233,13 @@
 	<div class="right_nav">
 		<ul>
 			<li><a href="" class="a_img"></a>
-				<div class="hidden"><a href="" class="a_img">会员权益</a>
-					<div>◆</div>
+				<div class="hidden" id="hidden"><a href="" class="a_img">会员权益</a>
+					<div></div>
 				</div>
 			</li>
-			<li></li>
+			<li>
+				<div class="cart"></div>
+			</li>
 			<li></li>
 			<li></li>
 			<li></li>
@@ -1238,6 +1251,22 @@
 		</ul>
 	</div>
 	<!-- right nav end -->
+	<!-- left floors begin -->
+	<div class="jump_floors">
+		<ul>
+			<li><div>导航</div></li>
+			<li><div>天猫超市</div></li>
+			<li><div>天猫国际</div></li>
+			<li><div>美丽人生</div></li>
+			<li><div>潮流酷玩</div></li>
+			<li><div>居家生活</div></li>
+			<li><div>打造爱巢</div></li>
+			<li><div>户外出行</div></li>
+			<li><div>猜你喜欢</div></li>
+			<li><i class="iconfont"></i>顶部</li>
+		</ul>
+	</div>
+	<!-- left floors end -->
 	<!-- footer begin -->
 	<footer>
 		<ul class="service">
@@ -1370,5 +1399,6 @@
 	</footer>
 	<!-- footer end -->
 </body>
+<script src="js/animate.js"></script>
 <script src="js/index.js"></script>
 </html>

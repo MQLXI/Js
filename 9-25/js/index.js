@@ -40,6 +40,7 @@ let login_submit;
 
 login.onclick = function(){
 	panel.style.display = 'block';
+	document.body.style.overflow = 'hidden';
 	login_submit = document.querySelector('.login_submit');
 	console.log(login_submit)
 }
@@ -48,6 +49,7 @@ var loginFn = function(){
 	if(usertext.length > 0){
 		user.userName = usertext;
 		panel.style.display = 'none';
+		document.body.style.overflow = 'visible';
 	}else{
 		alert('请输入用户名！');
 		return;

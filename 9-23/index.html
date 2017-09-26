@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+	.box{
+		width: 100px;
+		height: 100px;
+		background: green;
+	}
+</style>
+<body>
+	<div class="box" id="box"></div>
+</body>
+<script>
+	let box = document.querySelector('.box');
+	let attr = box.getAttribute('id');    //获取属性
+	box.setAttribute('active', true);
+	console.log(box.active);    //undefined
+	console.log(box.getAttribute('active'));     //true
+</script>
+</html>

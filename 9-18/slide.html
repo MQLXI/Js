@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		button{
+			width: 120px;
+			padding: 4px;
+			border: none;
+			border-radius: 8px;
+			background: #4bcef7;
+			color: #fff;
+			margin-right: 10px;
+			font-size: 20px;
+			font-weight: bold;
+			outline: none;
+		}
+		#slide{
+			width: 100px;
+			height: 0;
+			margin: 10px;
+			background: #ff6700;
+			transition: all 0.5s;
+			overflow: hidden;
+		}
+		.banner{
+			width: 1226px;
+			height: 450px;
+			margin: 90px auto 50px;
+			border: 1px solid #ccc;
+			position: relative;
+		}
+		.banner .banner_btn{
+			width: auto;
+			height: 15px;
+			position: absolute;
+			bottom: 20px;
+			left: 50%;
+			margin-left: -62px;
+			list-style: none;
+
+		}
+		.banner .banner_btn>li{
+			width: 15px;
+			height: 15px;
+			border-radius: 50%;
+			background: #4bcef7;
+			margin-right: 10px;
+			float: left;
+			cursor: pointer;
+		}
+		#on{
+			background: #ff6700;
+		}
+	</style>
+</head>
+<body>
+	<main class="banner">
+		<ul class="banner_btn"></ul>
+	</main>
+	<button>slideDown</button>
+	<button>slideUp</button>
+	<div id="slide">
+		<p>sdcnjkl</p>
+		<p>sdcnjkl</p>
+	</div>
+
+	<script>
+		let btns = document.getElementsByTagName('button');
+		let slide = document.getElementById('slide');
+		/*for(let i = 0; i < btns.length; i++){
+			btns[i].onclick = function(){
+				slide.style.height = '400px';
+			}
+		}*/
+
+		/*btns[0].onclick = function(){
+			slide.style.height = '400px';
+		}
+		btns[1].onclick = function(){
+			slide.style.height = '0';
+		}*/
+
+		let flag = true;
+		btns[0].onclick = function(){
+			if(flag){
+				slide.style.height = '300px';
+				btns[0].innerText = 'slideUp';
+				flag = false;
+			}else{
+				slide.style.height = '0';
+				btns[0].innerText = 'slideDown';
+				flag = true;
+			}
+		}
+
+		//banner
+		let banner_btn = document.getElementsByClassName('banner_btn');
+		for(let i = 0; i < 5; i++){
+			banner_btn[0].innerHTML += '<li></li>';
+		}
+		let lis = banner_btn[0];console.log(lis.length);
+		for(let i = 0; i < lis.length; i++){
+			lis[i].onclick = function(){
+				// lis[i].style.background = '#ff6700';
+				// lis[i].className = 'on';
+				for(let j = 0; j < lis.length; j++){
+					lis[j].id = '';
+				}
+				lis[i].id = 'on';
+			}
+		}
+	</script>
+</body>
+</html>

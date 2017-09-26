@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>9-22</title>
+</head>
+<body>
+	<div class="box">
+		<div class="son">div.son</div>
+		<p class="son">p.son</p>
+		<span>span</span>
+		<div>div</div>
+	</div>
+	<script>
+		let ele = document.querySelector('div.son');
+		console.log(next(ele, 'span'));
+/*
+		function next(element, tagname){
+			tagname = tagname.toUpperCase();
+			let nextEle = null;
+			do{
+				nextEle = element.nextElementSibling;
+				element = nextEle;
+			}while(nextEle && nextEle != tagname)
+			return nextEle;
+		}
+*/
+		function next(element, tagname){
+			tagname = tagname.toUpperCase();
+			let nextEle = null;
+			while(nextEle = element.nextElementSibling){
+				if(nextEle.nodeName == tagname)
+					break;
+				element = nextEle;
+			}
+			return nextEle;
+		}
+	</script>
+</body>
+</html>

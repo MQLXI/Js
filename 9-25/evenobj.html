@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+	.box{
+		width: 200px;
+		height: 200px;
+		border-radius: 50%;
+		background: red;
+		margin-top: 1000px;
+		position: absolute;
+	}
+</style>
+<body>
+	<div class="box"></div>
+	<script>
+		window.addEventListener('load', function(){
+			let box = document.querySelector('.box');
+
+			box.addEventListener('mousemove', function(e){
+				this.innerHTML = `
+					相对于页面pageX = ${e.pageX}<br>
+					相对于页面pageY = ${e.pageY}<br>
+					相对于浏览器clientX = ${e.clientX}<br>
+					相对于浏览器clientY = ${e.clientY}<br>
+					相对于事件源offsetX = ${e.offsetX}<br>
+					相对于事件源offsetY = ${e.offsetY}<br>
+					相对于屏幕screenX = ${e.screenX}<br>
+					相对于屏幕screenY = ${e.screenY}<br>
+				`;
+				this.style.left = `${e.clientX+100}px`;
+				this.style.top = `${e.clientY+100}px`;
+			});
+		});
+	</script>	
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>文档对象模型</title>
+	<style>
+		#box{
+			width: 200px;
+			height: 200px;
+			background: #f0b0b0;
+			float: left;
+			margin: 10px;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">this is for every one</div>
+	<div id="box">this is for every one</div>
+	<div id="box" class="box">this is for every one</div>
+	<div id="box">this is for every one</div>
+
+	<script>
+		/* 标签（节点）  内容 标签属性  */
+		/* DOM 核心对象document */
+		console.log(document);
+		console.dir(document);	//输出对象
+		document.title = 'DOM';
+		document.bgColor = '#f3f3f3';
+		document.fgColor = '#ff6700';
+		let box = document.getElementById('box');		//id选择器  返回制定id的第一个元素
+		box.style.height = '500px';
+
+		let divs = document.getElementsByTagName('div');	//标签选择器 返回集合
+		divs[1].style.background = 'skyblue';
+
+		let div_class = document.getElementsByClassName('box');	//类名选择器  返回集合
+		div_class[0].style.width = '300px';
+	</script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>创建元素</title>
+</head>
+<style>
+	body{
+		background: #000;
+		margin: 0;
+		padding: 0;
+	}
+	.box{
+		width: 1px;
+		height: 1px;
+		position: absolute;
+		left: 50%;
+		top: 50%;
+	}
+	.p{
+		width: 200px;
+		height: 200px;
+		background: red;
+		color: greenyellow;
+		font-size: 50px;
+		line-height: 100px;
+	}
+	.circle{
+		border-radius: 50%;
+		/* position: absolute;
+		left: 50%;
+		top: 50%; */
+		position: absolute;
+		transition: all 0.6s;
+		/* animation: floatUp 10s  infinite; */
+	}
+	@keyframes floatUp{
+		100%{
+			transform: translateY(-600px);
+			/* top: -100px; */
+		}
+	}
+</style>
+<body>
+	<div class="box"></div>
+	<script>
+		window.onload = function(){
+			let box = document.querySelector('div.box');
+			let divs = document.createElement('div');
+			divs.style.width = '200px';
+			divs.style.height = '200px';
+			divs.style.background = 'blue';
+			// box.appendChild(divs);
+
+			let p = document.createElement('p');
+			// p.className = 'p';
+			p.style.cssText = `
+				width: 600px;
+				height: 150px;
+				background: green;
+				color: pink;
+				font-size: 50px;
+				line-height:150px;
+				font-weight: 400;
+				text-align: center;
+			`;
+			p.innerText = `嘿，遇见你真好！`;
+			// box.appendChild(p);
+			// 
+			// 
+			ball(36, 300, 1);
+		}
+	</script>
+	<script>
+		
+		function ball(num){
+			let box = document.querySelector('div.box');
+			let t = 0.5;
+			for(let i = 0; i < num; i++){
+				let divs = document.createElement('div');
+				divs.className = 'circle';
+				let size = Math.round(Math.random()*70+30);
+				divs.style.left = `${(window.innerWidth-size)/2}px`;
+				divs.style.top = `${(window.innerHeight-size)/2}px`;
+				divs.style.width = `${size}px`;
+				divs.style.height = `${size}px`;
+				divs.style.background = getColor();
+				document.body.appendChild(divs);
+				divs.style.transition = `all ${t}s ease`;
+				divs.style.opacity = 0;
+				setTimeout(function(){
+					divs.style.opacity = 1;
+					// divs.style.transitionDelay = `${t+=0.2}s`;
+					divs.style.transitionDelay = `${Math.random()*1000}ms`;
+					divs.style.left = `${Math.floor((window.innerWidth-size)*Math.random())}px`;
+					divs.style.top = `${Math.floor((window.innerHeight-size)*Math.random())}px`;
+				}, 10*i);
+			}
+		}
+		function ball_2(num,r, step){
+			let box = document.querySelector('div.box');
+			step = step || 10;
+			num = (360/step)*10.5;
+			let base = 0;
+			// let size = Math.round(Math.random()*70+30);
+			let size = 10;
+			let t = 0.5;
+			for(let i = 0; i < num; i++){
+				let divs = document.createElement('div');
+				divs.className = 'circle';
+				
+				divs.style.left = `${-size/2}px`;
+				divs.style.top = `${-size/2}px`;
+				divs.style.width = `${size}px`;
+				divs.style.height = `${size}px`;
+				divs.style.background = getColor();
+				box.appendChild(divs);
+				// let t = Math.random()*10;
+				// let t = 1;
+				divs.style.transition = `all ${t}s ease`;
+				divs.style.opacity = 0;
+				setTimeout(function(){
+					divs.style.opacity = 1;
+					// divs.style.transitionDelay = `${t+=0.2}s`;
+					divs.style.transitionDelay = `${Math.random()*1000}ms`;
+					// divs.style.left = `${Math.floor((window.innerWidth-size)*Math.random())}px`;
+					// divs.style.top = `${Math.floor((window.innerHeight-size)*Math.random())}px`;
+					let deg = (i*step)*Math.PI/180;
+					divs.style.left = `${Math.floor(Math.sin(deg)*r)-size/2}px`;
+					divs.style.top = `${Math.floor(Math.cos(deg)*r)-size/2}px`;
+				}, 10*i);
+			}
+		}
+		function getColor(){
+			let arr = [];
+			for(let i = 0; i < 3; i++){
+				arr.push(Math.round(Math.random()*255));
+			}
+			return `rgba(${arr.join()}, 0.7)`;
+		}
+	</script>
+</body>
+</html>

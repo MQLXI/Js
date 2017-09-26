@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>insert</title>
+	<script src="../myjs.js"></script>
+</head>
+<body>
+	<div class="box">
+		<p>p</p>
+		<span>span</span>
+		<div>div</div>
+	</div>
+	<script>
+		let box = $('.box')[0];
+		let span = $('span')[0];
+		let ele = document.createElement('div');
+		ele.style.cssText = `
+			width: 300px;
+			height: 150px;
+			background: green;
+		`;
+		// box.appendChild(ele);
+		// box.insertBefore(ele, span);
+		// box.insertAfter(ele, span);
+		// box.appendPreviousChild(ele);
+		// ele.appendTo(box);
+		
+		// box.remove();
+		// box.removeChild(span);
+		
+		// document.body.remove();
+		// 
+		box.innerHTML = '';
+	</script>
+</body>
+</html>

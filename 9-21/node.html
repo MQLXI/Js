@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div class="box">
+		<div class="son">1</div>
+		<div class="son">1</div>
+		<div class="son">1</div>
+		<p class="son">p1</p>
+		<p class="son">p2</p>
+	</div>
+	<div class="box"></div>
+</body>
+<script>
+	let ele = document.querySelectorAll('div.son')[0];
+	// console.log(ele);
+	
+	let result = next(ele, 'div');
+	console.log(result);
+
+	function next(obj, tagName){
+		tagName = tagName.toUpperCase();
+		let nextElement = null;
+		do{
+			nextElement = obj.nextElementSibling;
+			obj = nextElement;
+		}while(nextElement && nextElement.nodeName != tagName)
+		return nextElement;
+	}
+
+/*	
+	//递归
+	function next(obj, tagName){
+	    tagName = tagName.toUpperCase();
+	    let nextElement = obj.nextElementSibling;
+	    if(nextElement){
+	    	if(nextElement.nodeName == tagName){
+		        return nextElement;
+		    }else{
+		        return nextElement = next(nextElement, tagName);
+		    }
+	    }
+	    return nextElement;
+	}
+*/
+/*
+	//通过父节点获取全部子节点，截取相应元素后的节点。
+	function next(obj, tagName){
+		let nextNodes = nextAll(obj);
+		for(let i = 0; i < nextNodes.length; i++){
+			if(nextNodes[i].nodeName == tagName.toUpperCase())
+				return nextNodes[i];
+		}
+		return null;
+	}
+
+	function nextAll(obj){
+		let parent = obj.parentNode;
+		let childs = parent.children;
+		let index = -1;
+		for(let i = 0; i < childs.length; i++){
+			if(childs[i] == obj){
+				index = i;
+				break;
+			}
+		}
+		let nextNodes = Array.from(childs).slice(index + 1);
+		return nextNodes;
+	}
+*/
+	let ele2 = document.querySelectorAll('p')[1];
+	let pa = closed(ele2, 'body');
+	console.log(pa);
+	// 查找指定标签名的最近父节点
+	function closed(element, tagName){
+		tagName = tagName.toUpperCase();
+		let parent = null;
+		do{
+			parent = element.parentNode;
+			element = parent;
+		}while(parent && parent.nodeName != tagName)
+		return parent;
+	}
+
+	// let div = document.getElementsByTagName('div');
+	// console.log(div);
+	/*let arr = Array.from(div);
+	console.log(arr);*/
+
+	//冒充
+	/*Array.prototype.forEach.call(div, function(element){
+		console.log(element);
+	});*/
+
+	/*let node = document.querySelector('.box');
+	let child = node.childNodes;
+	console.log(child);
+	let res = Array.prototype.filter.call(child, (element)=>{
+		return element.nodeType == 1;
+	});
+	console.log(res);
+	for(let e of child){
+		console.log(e.nodeType);
+	}*/
+</script>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	.box{
+		width: 300px;
+		height: 300px;
+		background: steelblue;
+		position: absolute;
+		top: 0;
+		left: 0;
+		border-radius: 50%;
+		transition: all 0.1s;
+	}
+	.son{
+		width: 150px;
+		height: 150px;
+		background: orange;
+		position: absolute;
+		top: 0;
+		right: 0;
+		border-radius: 50%;
+		transition: all 0.1s;
+	}
+</style>
+<body>
+	<div class="box"></div>
+	<div class="son"></div>
+	<script src="myjs.js"></script>
+	<script>
+		let box = $('.box')[0];
+		let son = $('.son')[0];
+		float(box);
+		float(son);
+		function float(obj){
+			let timer = setInterval(move, 100);
+			let stepY = 10;
+			let stepX = 10;
+			function move(){
+				let maxY = window.innerHeight - obj.offsetHeight;
+				let maxX = window.innerWidth - obj.offsetWidth;
+				let tops = obj.offsetTop;
+				let lefts = obj.offsetLeft;
+				console.log(lefts, tops, maxX, lefts + stepX);
+				if(tops >= maxY){
+					tops = maxY;
+					stepY *= -1;
+				}
+				if(tops <= 0){
+					tops = 0;
+					stepY *= -1;
+				}
+				if(lefts >= maxX){
+					lefts = maxX;
+					stepX *= -1;
+				}
+				if(lefts <= 0){
+					lefts = 0;
+					stepX *= -1;
+				}
+				obj.style.top = tops + stepY + 'px';
+				obj.style.left = lefts + stepX + 'px';
+			}
+		}
+	</script>
+</body>
+</html>

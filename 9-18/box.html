@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+	.box{
+		width: 300px;
+		height: 300px;
+		background: red;
+		margin: 50px auto;
+		/* transition: all 0.1s ease; */
+	}
+</style>
+<body>
+	<div class="box"></div>
+	<script>
+		let box = document.getElementsByClassName('box')[0];
+		let t = setInterval(fn, 100);
+		let flag = true;
+		let speed = 10;
+		function fn(){
+			let w = parseInt(getComputedStyle(box, null).width);
+			if(w >= 500){
+				// flag = false;
+				speed = -speed;
+			}else if(w < 300){
+				// flag = true;
+				speed = -speed;
+			}
+			box.style.width = `${w + speed}px`;
+			/*if(flag){
+				box.style.width = `${w + speed}px`;
+			}else{
+				box.style.width = `${w - speed}px`;
+			}*/
+		}
+
+		/* （什么）事件  （发生在谁身上）事件源  事件处理 */
+		box.onmouseover = function(){
+			box.style.background = 'skyblue';
+		}
+		box.onmouseout = function(){
+			box.style.background = 'red';
+		}
+		box.ondblclick = function(){
+			clearInterval(t);
+		}
+	</script>
+</body>
+</html>

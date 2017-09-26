@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>drag</title>
+</head>
+<style>
+	.box{
+		width: 200px;
+		height: 200px;
+		/* border-radius: 50%; */
+		background: red;
+		position: absolute;
+	}
+	.son{
+		width: 200px;
+		height: 200px;
+		/* border-radius: 50%; */
+		background: green;
+		position: absolute;
+		top: 200px;
+	}
+</style>
+<body>
+	<div class="box"></div>
+	<div class="son"></div>
+	<script>
+		window.addEventListener('load', function(){
+			let box = document.querySelector('.box');
+			let son = document.querySelector('.son');
+			// drag(box);
+			// drag(son);
+			function drag(obj){/*拖动*/
+				obj.addEventListener('mousedown', function(e){
+					let oX = e.offsetX;
+					let oY= e.offsetY;
+					document.addEventListener('mousemove', fn);
+					obj.addEventListener('mouseup', function(){
+						document.removeEventListener('mousemove', fn);
+					});
+
+					function fn(e){
+						let lefts = e.clientX - oX;
+						let tops = e.clientY - oY;
+						obj.style.left = lefts + 'px';
+						obj.style.top = tops + 'px';
+					}
+				});
+			}
+		});
+	</script>
+	<script>
+		class Drag{
+			constructor(obj){
+				this.obj = obj;
+			}
+			drag(){
+				let obj = this.obj;
+				obj.addEventListener('mousedown', function(e){
+					let oX = e.offsetX;
+					let oY= e.offsetY;
+					document.addEventListener('mousemove', fn);
+					obj.addEventListener('mouseup', function(){
+						document.removeEventListener('mousemove', fn);
+					});
+					function fn(e){
+						let lefts = e.clientX - oX;
+						let tops = e.clientY - oY;
+						obj.style.left = lefts + 'px';
+						obj.style.top = tops + 'px';
+					}
+				});
+			}
+		}
+
+		let box = document.querySelector('.box');
+		let son = document.querySelector('.son');
+		let drag = new Drag(box);
+		let drag_son = new Drag(son);
+		drag.drag();
+		drag_son.drag();
+	</script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>animate</title>
+	<script src="myjs.js"></script>
+</head>
+<style>
+	.box{
+		width: 300px;
+		height: 300px;
+		background: deepskyblue;
+		margin: 40px auto;
+	}
+</style>
+<body>
+	<div class="box"></div>
+	<script>
+		class Person{
+		    constructor(name, age){
+		        this.name = name;
+		      	this.age = age;
+		    }
+		}
+		class Student extends Person{
+		    constructor(){
+		        super();    //继承父类(this)
+		    }
+		}
+		var zhangsan = new Person();
+		var lisi = new Student();
+		lisi.name = 'lisi';
+		zhangsan.name = 'zhangsan';
+		console.log(zhangsan);
+		console.log(lisi);
+		/*var obj = $('.box')[0];
+		animate(obj, {width:500, height:500, marginTop:300},60);
+		function animate(obj, attrObj, cycle){
+			let timer = setInterval(function(){
+				for(let e in attrObj){
+					let val = parseInt(getComputedStyle(obj, null)[e]);
+					if (val >= attrObj[e]) {
+						clearInterval(timer);
+					}
+					obj.style[e] = val + 10 +'px';
+				}
+			}, cycle);
+		}*/
+	</script>
+	<script src="animate.js"></script>
+	<script src="test.js"></script>
+</body>
+</html>
